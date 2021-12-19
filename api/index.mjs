@@ -22,7 +22,8 @@ async function getWorriorInfo(trackerSite, userName) {
 // console.log(result);
 
 import { Telegraf } from "telegraf";
-const { BOT_TOKEN, PROJECT_NAME, PORT } = process.env;
+const { BOT_TOKEN } = process.env;
+const PORT = process.env.PORT || 3000;
 
 const bot = new Telegraf(BOT_TOKEN);
 
@@ -34,7 +35,7 @@ bot.hears(/.*get_(.+?)_(.+)/g, async ctx => {
 
 bot.launch({
   webhook: {
-    domain: `https://archiveteam-tgbot.cxu.vercel.app`,
+    domain: `https://archiveteam-tgbot.vercel.app`,
     port: PORT
   }
 })
