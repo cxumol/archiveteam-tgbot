@@ -39,3 +39,8 @@ bot.launch({
     port: PORT
   }
 })
+
+module.exports = (req, res) => {
+  const { name = 'Telegram' } = req.query;
+  res.send(`Hello ${name}!`);
+};
