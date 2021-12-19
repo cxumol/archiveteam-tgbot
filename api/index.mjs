@@ -29,6 +29,7 @@ const bot = new Telegraf(BOT_TOKEN);
 
 bot.hears(/.*get_(.+?)_(.+)/g, async ctx => {
   const info = await getWorriorInfo(ctx.match[1], ctx.match[2]);
+  console.log(info);
   ctx.reply(info);
 });
 
