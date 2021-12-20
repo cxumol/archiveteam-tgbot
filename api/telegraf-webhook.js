@@ -11,7 +11,7 @@ async function getWorriorInfo(trackerSite, userName) {
   const downloadersOrder = stats.downloaders.sort(function(a, b) {
     return stats.downloader_bytes[b] - stats.downloader_bytes[a];
   });
-  const userRank = downloadersOrder.indexOf(userName);
+  const userRank = downloadersOrder.indexOf(userName) +1; // TOP 1, not TOP 0
   const userBytes = stats.downloader_bytes[userName];
   const userCounts = stats.downloader_count[userName];
   return {
@@ -53,7 +53,7 @@ module.exports = async (request, response) => {
       if (myMatch) {
         try{
           const info = await getWorriorInfo(myMatch[1], myMatch[2]);
-          const message = `✅\n*${JSON.stringify(info)}*`;
+          const message = `✅\n*${JSON.stringify(info) ,null,2}*`;
           await bot.sendMessage(id, message, { parse_mode: "Markdown" });
         }catch (err){
           // const errMsg = "something wrong, check if your info is correct";
