@@ -46,6 +46,11 @@ export default async function handler(request, response) {
     ctx.reply(info);
   });
 
+  bot.on('text', (ctx) => {
+  // Using context shortcut
+  ctx.reply(`Hello ${ctx.state.role}`)
+  })
+
   bot.launch({
     webhook: {
       domain: `https://archiveteam-tgbot.vercel.app`,
@@ -53,7 +58,7 @@ export default async function handler(request, response) {
     }
   })
 
-  response.status(200).send(`OK`);
+  response.status(200).send(`OK1`);
 }
 
 
