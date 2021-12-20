@@ -1,3 +1,4 @@
+// no-use
 const { filesize } = require('filesize');
 const { fetch } = require('node-fetch');
 // import fetch from "node-fetch";
@@ -23,8 +24,9 @@ async function getWorriorInfo(trackerSite, userName) {
 // const result = await getWorriorInfo("reddit", "cxumol");
 // console.log(result);
 
-const { Telegraf } = require('telegraf');
+// const { Telegraf } = require('telegraf');
 // import { Telegraf } from "telegraf";
+const TelegramBot = require("node-telegram-bot-api");
 const { BOT_TOKEN , WEBHOOKPATH } = process.env;
 const PORT = process.env.PORT || 3000;
 // console.log("PORT", PORT)
@@ -36,27 +38,32 @@ const PORT = process.env.PORT || 3000;
 
 module.exports = async (request, response) => {
 
-  const bot = new Telegraf(BOT_TOKEN);
+  const bot = new TelegramBot(BOT_TOKEN);
 
-  bot.hears(/.*get_(.+?)_(.+)/g, async ctx => {
-    console.log(ctx.match[1], ctx.match[2]);
-    const info = await getWorriorInfo(ctx.match[1], ctx.match[2]);
-    console.log(info);
-    ctx.reply(info);
-  });
-
-  bot.on('text', (ctx) => {
-  // Using context shortcut
-  ctx.reply(`Hello ${ctx.meaasge.role}`)
-  })
-
-  bot.on('message', (ctx) => {
-    console.log(ctx.message)
-  })
-
-
-  bot.telegram.setWebhook(`https://archiveteam-tgbot.vercel.app/${WEBHOOKPATH}`);
-  bot.startWebhook(`${WEBHOOKPATH}`, null, PORT)
+  try {
+    const { body } = request;
+    if (body.message) {
+      const {
+        chat: { id },
+        text,
+      } = body.message;
+      let myMatch = text.match( /.*get_(.+?)_(.+)/g );
+      if (myMatch) {
+        const info = await getWorriorInfo(ctx.match[1], ctx.match[2]);
+        const message = `✅\n*${info}*`;
+        await bot.sendMessage(id, message, { parse_mode: "Markdown" });
+      }else{
+        await bot.sendMessage(id, "press /help to find out usage", { parse_mode: "Markdown" });
+      }
+      
+      
+    }
+  } catch (error) {
+    // If there was an error sending our message then we
+    // can log it into the Vercel console
+    console.error("Error sending message");
+    console.log(error.toString());
+  }
 
   response.status(200).send(`OK1`);
 }

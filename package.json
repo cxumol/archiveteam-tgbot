@@ -2,7 +2,8 @@
     "dependencies": {
       "filesize": "^8.0.6",
       "node-fetch": "^2",
-      "telegraf": "^4.5.2"
+      "telegraf": "^4.5.2",
+      "node-telegram-bot-api": "^0.56.0"
     }
   }
   
