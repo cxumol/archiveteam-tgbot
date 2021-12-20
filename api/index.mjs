@@ -32,6 +32,7 @@ console.log("PORT", PORT)
 const bot = new Telegraf(BOT_TOKEN);
 
 bot.hears(/.*get_(.+?)_(.+)/g, async ctx => {
+  console.log(ctx.match[1], ctx.match[2]);
   const info = await getWorriorInfo(ctx.match[1], ctx.match[2]);
   console.log(info);
   ctx.reply(info);
@@ -52,10 +53,10 @@ bot.startWebhook(`${WEBHOOKPATH}`, null, 3000)
 //   res.send(`Hello ${name}!`);
 // };
 
-export default function handler(req, res) {
-  res.status(200).json({
-    body: req.body,
-    query: req.query,
-    cookies: req.cookies,
-  });
-}
+// export default function handler(req, res) {
+//   res.status(200).json({
+//     body: req.body,
+//     query: req.query,
+//     cookies: req.cookies,
+//   });
+// }
