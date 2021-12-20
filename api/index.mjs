@@ -53,7 +53,7 @@ export default function handler(request, response) {
     }
   })
 
-  res.status(200).send(`OK`);
+  response.status(200).send(`OK`);
 }
 
 
