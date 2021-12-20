@@ -1,5 +1,5 @@
-const { fetch } = require('node-fetch');
 const { filesize } = require('filesize');
+const { fetch } = require('node-fetch');
 
 async function getWorriorInfo(trackerSite, userName) {
   console.log(trackerSite, userName  )
