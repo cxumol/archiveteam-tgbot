@@ -47,8 +47,13 @@ module.exports = async (request, response) => {
 
   bot.on('text', (ctx) => {
   // Using context shortcut
-  ctx.reply(`Hello ${ctx.state.role}`)
+  ctx.reply(`Hello ${ctx.meaasge.role}`)
   })
+
+  bot.on('message', (ctx) => {
+    console.log(ctx.message)
+  })
+
 
   bot.telegram.setWebhook(`https://archiveteam-tgbot.vercel.app/${WEBHOOKPATH}`);
   bot.startWebhook(`${WEBHOOKPATH}`, null, PORT)
