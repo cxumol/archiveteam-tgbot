@@ -39,7 +39,7 @@ bot.hears(/.*get_(.+?)_(.+)/g, async ctx => {
 
 bot.launch({
   webhook: {
-    domain: `https://archiveteam-tgbot.vercel.app/api`,
+    domain: `https://archiveteam-tgbot.vercel.app/`,
     port: PORT
   }
 })
