@@ -47,7 +47,7 @@ module.exports = async (request, response) => {
         chat: { id },
         text,
       } = body.message;
-      let myMatch = text.matchAll( /.*get_(.+?)_(.+)/g );
+      let myMatch = text.match( /.*get_(.+?)_(.+)/ );
       if (myMatch) {
         console.log( "myMatch", myMatch)
         const info = await getWorriorInfo(myMatch[1], myMatch[2]);
