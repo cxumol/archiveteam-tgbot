@@ -50,7 +50,8 @@ module.exports = async (request, response) => {
       let myMatch = text.match( /.*get_(.+?)_(.+)/g );
       if (myMatch) {
         const info = await getWorriorInfo(myMatch[1], myMatch[2]);
-        const message = `✅\n*${info}*`;
+        const infoStr = JSON.stringify(info, null, ' ');
+        const message = `✅\n*${infoStr}*`;
         await bot.sendMessage(id, message, { parse_mode: "Markdown" });
       }else{
         await bot.sendMessage(id, "press /help to find out usage", { parse_mode: "Markdown" });
