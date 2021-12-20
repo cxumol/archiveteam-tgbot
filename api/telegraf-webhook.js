@@ -51,18 +51,21 @@ module.exports = async (request, response) => {
       } = body.message;
       let myMatch = text.match( /.*get_(.+?)_(.+)/ );
       if (myMatch) {
-        console.log( "myMatch", myMatch)
-        const info = await getWorriorInfo(myMatch[1], myMatch[2]);
-        console.log("info",info)
-        const infoStr = JSON.stringify(info, null, ' ');
-        const message = `✅\n*${infoStr}*`;
-        await bot.sendMessage(id, message, { parse_mode: "Markdown" });
+        try{
+          const info = await getWorriorInfo(ctx.match[1], ctx.match[2]);
+          const message = `✅\n*${info}*`;
+          await bot.sendMessage(id, message, { parse_mode: "Markdown" });
+        }catch (err){
+          // const errMsg = "something wrong, check if your info is correct";
+          const errMsg = err.toString()
+          await bot.sendMessage(id, errMsg, { parse_mode: "Markdown" });
+        }
+      }else if (text == "/help") {
+        await bot.sendMessage(id, "send /get_${projectID}_${userNickName}. For example, ", { parse_mode: "Markdown" });
+      }
       }else{
         await bot.sendMessage(id, "press /help to find out usage", { parse_mode: "Markdown" });
       }
-      
-      
-    }
   } catch (error) {
     // If there was an error sending our message then we
     // can log it into the Vercel console
