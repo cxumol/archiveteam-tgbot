@@ -59,14 +59,11 @@ module.exports = async (request, response) => {
           await bot.sendMessage(id, errMsg, { parse_mode: "Markdown" });
         }
       }else if (text == "/help") {
-        await bot.sendMessage(id, "send /get_reddit_cxumol", { parse_mode: "Markdown" });
+        await bot.sendMessage(id, "send /get_${projectID}_${userNickName}. For example, ", { parse_mode: "Markdown" });
       }
       }else{
         await bot.sendMessage(id, "press /help to find out usage", { parse_mode: "Markdown" });
       }
-      
-      
-    }
   } catch (error) {
     // If there was an error sending our message then we
     // can log it into the Vercel console
