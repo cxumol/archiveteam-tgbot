@@ -52,7 +52,7 @@ module.exports = async (request, response) => {
       let myMatch = text.match( /.*get_(.+?)_(.+)/ );
       if (myMatch) {
         try{
-          const info = await getWorriorInfo(ctx.match[1], ctx.match[2]);
+          const info = await getWorriorInfo(myMatch[1], myMatch[2]);
           const message = `✅\n*${info}*`;
           await bot.sendMessage(id, message, { parse_mode: "Markdown" });
         }catch (err){
