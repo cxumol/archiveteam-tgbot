@@ -1,3 +1,4 @@
+process.env.NTBA_FIX_319 = 1;
 const { filesize } = require('filesize');
 const { fetch } = require('node-fetch');
 // import fetch from "node-fetch";
