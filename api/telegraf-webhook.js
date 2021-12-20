@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 // import filesize from "filesize";
 
 async function getWorriorInfo(trackerSite, userName) {
-  console.log(trackerSite, userName  )
+//   console.log(trackerSite, userName)
   const response = await fetch("https://legacy-api.arpa.li/reddit/stats.json");
   const stats = await response.json();
   const downloadersOrder = stats.downloaders.sort(function(a, b) {
@@ -47,7 +47,7 @@ module.exports = async (request, response) => {
         chat: { id },
         text,
       } = body.message;
-      let myMatch = text.match( /.*get_(.+?)_(.+)/g );
+      let myMatch = text.matchAll( /.*get_(.+?)_(.+)/g );
       if (myMatch) {
         console.log( "myMatch", myMatch)
         const info = await getWorriorInfo(myMatch[1], myMatch[2]);
