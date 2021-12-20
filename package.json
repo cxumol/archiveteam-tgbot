@@ -1,7 +1,7 @@
 {
     "dependencies": {
       "filesize": "^8.0.6",
-      "node-fetch": "^2.6.6",
+      "node-fetch": "^3",
       "telegraf": "^4.5.2"
     }
   }
