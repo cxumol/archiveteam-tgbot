@@ -1,16 +1,8 @@
 {
-    "name": "archiveteam-tgbot",
-    "version": "0.0.1",
-    "description": "Telegram bot for tracking ArchiveTeam warriors' rank",
-    "main": "api/index.mjs",
-    "scripts": {
-        "start": "node --experimental-modules --es-module-specifier-resolution=node api/index.mjs"
-    },
     "dependencies": {
       "filesize": "^8.0.6",
-      "node-fetch": "^2",
+      "node-fetch": "^2.6.6",
       "telegraf": "^4.5.2"
-    },
-    "license": "MIT"
+    }
   }
   
