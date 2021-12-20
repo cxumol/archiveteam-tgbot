@@ -1,5 +1,5 @@
-import fetch from "node-fetch";
-import filesize from "filesize";
+const { fetch } = require('node-fetch');
+const { filesize } = require('filesize');
 
 async function getWorriorInfo(trackerSite, userName) {
   console.log(trackerSite, userName  )
@@ -21,7 +21,7 @@ async function getWorriorInfo(trackerSite, userName) {
 // const result = await getWorriorInfo("reddit", "cxumol");
 // console.log(result);
 
-import { Telegraf } from "telegraf";
+const { Telegraf } = require('telegraf');
 const { BOT_TOKEN } = process.env;
 const PORT = process.env.PORT || 3000;
 
