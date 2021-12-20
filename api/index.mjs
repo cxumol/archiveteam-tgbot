@@ -25,7 +25,7 @@ async function getWorriorInfo(trackerSite, userName) {
 
 // const { Telegraf } = require('telegraf');
 import { Telegraf } from "telegraf";
-const { BOT_TOKEN } = process.env;
+const { BOT_TOKEN , WEBHOOKPATH } = process.env;
 const PORT = process.env.PORT || 3000;
 console.log("PORT", PORT)
 
