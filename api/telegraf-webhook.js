@@ -15,6 +15,8 @@ async function getWorriorInfo(trackerSite, userName) {
   const userBytes = stats.downloader_bytes[userName];
   const userCounts = stats.downloader_count[userName];
   return {
+    id: userName,
+    ArchiveTeamTracker: trackerSite,
     rank: userRank,
     size: filesize(userBytes, { standard: "iec", unix: false }),
     counts: userCounts
