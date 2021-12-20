@@ -39,7 +39,7 @@ bot.hears(/.*get_(.+?)_(.+)/g, async ctx => {
 
 
 bot.telegram.setWebhook(`https://archiveteam-tgbot.vercel.app/${WEBHOOKPATH}`)
-bot.startWebhook(`${WEBHOOKPATH}`, null, PORT)
+bot.startWebhook(`${WEBHOOKPATH}`, null, 3000)
 // bot.launch({
 //   webhook: {
 //     domain: `https://archiveteam-tgbot.vercel.app`,
