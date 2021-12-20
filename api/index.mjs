@@ -38,7 +38,7 @@ bot.hears(/.*get_(.+?)_(.+)/g, async ctx => {
 });
 
 
-bot.telegram.setWebhook(`https://archiveteam-tgbot.vercel.app/${WEBHOOKPATH}`})
+bot.telegram.setWebhook(`https://archiveteam-tgbot.vercel.app/${WEBHOOKPATH}`)
 bot.startWebhook(`${WEBHOOKPATH}`, null, PORT)
 // bot.launch({
 //   webhook: {
