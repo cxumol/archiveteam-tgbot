@@ -35,7 +35,7 @@ const PORT = process.env.PORT || 3000;
 // bot.telegram.setWebhook(`https://archiveteam-tgbot.vercel.app/${WEBHOOKPATH}`);
 // bot.startWebhook(`${WEBHOOKPATH}`, null, PORT)
 
-export default function handler(request, response) {
+export default async function handler(request, response) {
 
   const bot = new Telegraf(BOT_TOKEN);
 
