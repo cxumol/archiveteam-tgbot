@@ -1,7 +1,7 @@
-// const { filesize } = require('filesize');
-// const { fetch } = require('node-fetch');
-import fetch from "node-fetch";
-import filesize from "filesize";
+const { filesize } = require('filesize');
+const { fetch } = require('node-fetch');
+// import fetch from "node-fetch";
+// import filesize from "filesize";
 
 async function getWorriorInfo(trackerSite, userName) {
   console.log(trackerSite, userName  )
@@ -23,8 +23,8 @@ async function getWorriorInfo(trackerSite, userName) {
 // const result = await getWorriorInfo("reddit", "cxumol");
 // console.log(result);
 
-// const { Telegraf } = require('telegraf');
-import { Telegraf } from "telegraf";
+const { Telegraf } = require('telegraf');
+// import { Telegraf } from "telegraf";
 const { BOT_TOKEN , WEBHOOKPATH } = process.env;
 const PORT = process.env.PORT || 3000;
 // console.log("PORT", PORT)
@@ -32,10 +32,9 @@ const PORT = process.env.PORT || 3000;
 
 
 
-// bot.telegram.setWebhook(`https://archiveteam-tgbot.vercel.app/${WEBHOOKPATH}`);
-// bot.startWebhook(`${WEBHOOKPATH}`, null, PORT)
 
-export default async function handler(request, response) {
+
+module.exports = async (request, response) => {
 
   const bot = new Telegraf(BOT_TOKEN);
 
@@ -51,18 +50,19 @@ export default async function handler(request, response) {
   ctx.reply(`Hello ${ctx.state.role}`)
   })
 
-  bot.launch({
-    webhook: {
-      domain: `https://archiveteam-tgbot.vercel.app`,
-      port: PORT
-    }
-  })
+  bot.telegram.setWebhook(`https://archiveteam-tgbot.vercel.app/${WEBHOOKPATH}`);
+  bot.startWebhook(`${WEBHOOKPATH}`, null, PORT)
 
   response.status(200).send(`OK1`);
 }
 
 
-
+// bot.launch({
+//   webhook: {
+//     domain: `https://archiveteam-tgbot.vercel.app`,
+//     port: PORT
+//   }
+// })
 
 // module.exports = (req, res) => {
 //   const { name = 'Telegram' } = req.query;
