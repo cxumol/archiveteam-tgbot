@@ -53,7 +53,7 @@ module.exports = async (request, response) => {
       if (myMatch) {
         try{
           const info = await getWorriorInfo(myMatch[1], myMatch[2]);
-          const message = `✅\n*${info}*`;
+          const message = `✅\n*${JSON.stringify(info)}*`;
           await bot.sendMessage(id, message, { parse_mode: "Markdown" });
         }catch (err){
           // const errMsg = "something wrong, check if your info is correct";
