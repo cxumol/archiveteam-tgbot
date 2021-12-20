@@ -61,7 +61,7 @@ module.exports = async (request, response) => {
           await bot.sendMessage(id, errMsg, { parse_mode: "Markdown" });
         }
       }else if (text == "/help") {
-        await bot.sendMessage(id, "send `/get_${projectID}_${userNickName}`. For example, /get\_reddit\_fuzzy80211", { parse_mode: "MarkdownV2" });
+        await bot.sendMessage(id, "send `/get_${projectID}_${userNickName}`\nFor example, /get\_reddit\_fuzzy80211", { parse_mode: "MarkdownV2" });
       }
       }else{
         await bot.sendMessage(id, "press /help to find out usage", { parse_mode: "Markdown" });
