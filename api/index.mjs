@@ -1,7 +1,7 @@
-// const { filesize } = require('filesize');
-// const { fetch } = require('node-fetch');
-import fetch from "node-fetch";
-import filesize from "filesize";
+const { filesize } = require('filesize');
+const { fetch } = require('node-fetch');
+// import fetch from "node-fetch";
+// import filesize from "filesize";
 
 async function getWorriorInfo(trackerSite, userName) {
   console.log(trackerSite, userName  )
@@ -44,7 +44,15 @@ bot.launch({
   }
 })
 
-module.exports = (req, res) => {
-  const { name = 'Telegram' } = req.query;
-  res.send(`Hello ${name}!`);
-};
+// module.exports = (req, res) => {
+//   const { name = 'Telegram' } = req.query;
+//   res.send(`Hello ${name}!`);
+// };
+
+// export default function handler(req, res) {
+//   res.status(200).json({
+//     body: req.body,
+//     query: req.query,
+//     cookies: req.cookies,
+//   });
+// }
