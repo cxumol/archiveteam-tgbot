@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 
 async function getWorriorInfo(trackerSite, userName) {
 //   console.log(trackerSite, userName)
-  const response = await fetch(`https://legacy-api.arpa.li/{trackerSite}/stats.json`);
+  const response = await fetch(`https://legacy-api.arpa.li/${trackerSite}/stats.json`);
   const stats = await response.json();
   const downloadersOrder = stats.downloaders.sort(function(a, b) {
     return stats.downloader_bytes[b] - stats.downloader_bytes[a];
